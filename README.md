@@ -25,10 +25,12 @@ User memiliki otoritas untuk mengakses landing page, mengakses halaman profil, m
 
 ### ✅ Daftar Modul dan Kontrak Kinerja
 CanWe mengimplementasikan beberapa fitur atau modul sebagai berikut.
-No. | Modul | Anggota yang mengerjakan
---- | ----- | ------------------------
-1 | Donasi | Muhammad Hadziq Razin
-2 | Penggalangan Dana | Febrian Dwi Kimhan
-3 | Notifikasi | Zanetta Aisha Dharmawan
-4 | Profil | Muhammad Haggy
-5 | FAQ | Maritza Rahayu Indriyani
+No. | Modul | Deskripsi Modul | Anggota yang mengerjakan
+--- | ----- | ----------------|------------------------
+1 | Donasi | User dapat mengirimkan donasi pada daftar donasi yang ada |Muhammad Hadziq Razin
+2 | Penggalangan Dana | User dapat membuat penggalangan dana baik untuk jenis penggalangan dana makanan autau penyuluhan pendidikan gizi | Febrian Dwi Kimhan
+3 | Notifikasi | User dapat melihat notifikasi yang dikirimkan oleh pihak CanWe |Zanetta Aisha Dharmawan
+4 | Profil | User dapat mengupdate data profil |Muhammad Haggy
+5 | FAQ | User dapat memberikan pertanyaan kepada pihak CanWe |Maritza Rahayu Indriyani
+
+### Alur pengintegrasian dengan web service untuk terhubung dengan aplikasi web yang sudah dibuat saat Proyek Tengah Semester
