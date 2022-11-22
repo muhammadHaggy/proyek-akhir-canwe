@@ -27,10 +27,11 @@ User memiliki otoritas untuk mengakses landing page, mengakses halaman profil, m
 CanWe mengimplementasikan beberapa fitur atau modul sebagai berikut.
 No. | Modul | Deskripsi Modul | Anggota yang mengerjakan
 --- | ----- | ----------------|------------------------
-1 | Donasi | User dapat mengirimkan donasi pada daftar donasi yang ada |Muhammad Hadziq Razin
-2 | Penggalangan Dana | User dapat membuat penggalangan dana baik untuk jenis penggalangan dana makanan autau penyuluhan pendidikan gizi | Febrian Dwi Kimhan
-3 | Notifikasi | User dapat melihat notifikasi yang dikirimkan oleh pihak CanWe |Zanetta Aisha Dharmawan
-4 | Profil | User dapat mengupdate data profil |Muhammad Haggy
-5 | FAQ | User dapat memberikan pertanyaan kepada pihak CanWe |Maritza Rahayu Indriyani
+1 | Donasi | Halaman untuk menampilkan donasi yang tersedia dan user dapat melakukan donasi |Muhammad Hadziq Razin
+2 | Penggalangan Dana | Halaman untuk melakukan penggalangan dana baik jenis penggalangan dana untuk makanan atau penyuluhan pendidikan gizi | Febrian Dwi Kimhan
+3 | Notifikasi | Halaman untuk melihat notifikasi yang dikirimkan oleh pihak CanWe |Zanetta Aisha Dharmawan
+4 | Profil | Halaman untuk mengupdate data profil |Muhammad Haggy
+5 | FAQ | Halaman untuk memberikan pertanyaan kepada pihak CanWe |Maritza Rahayu Indriyani
+
 
 ### Alur pengintegrasian dengan web service untuk terhubung dengan aplikasi web yang sudah dibuat saat Proyek Tengah Semester
