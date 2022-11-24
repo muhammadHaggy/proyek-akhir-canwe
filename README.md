@@ -35,3 +35,8 @@ No. | Modul | Deskripsi Modul | Anggota yang mengerjakan
 
 
 ### Alur pengintegrasian dengan web service untuk terhubung dengan aplikasi web yang sudah dibuat saat Proyek Tengah Semester
+1. Melengkapi end point pada web untuk tiap modul (baik untuk menambil dan mengirim data)
+2. Menambahkan middleware di Django agar API dapat diakses dari luar website
+3. Membuat fungsi asynchronous untuk setiap proses yang berkaitan dengan mengambil, mengirim, ataupun mengubah data
+4. Pengambilan data akan menggunakan http.get dari endpoint data di web yang hasil pemanggilannya akan digunakan untuk ditampilkan pada widget yang digunakan
+5. Untuk mengirim data akan digunakan request http.post yang menuju ke endpoint untuk menyimpan data yang disimpan di database Django
