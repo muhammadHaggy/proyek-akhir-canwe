@@ -101,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                           if (request.loggedIn) {
                             // Code here will run if the login succeeded.
                             print("Login Succesfull");
+                            if (!mounted) return;
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ProfilePage(),
