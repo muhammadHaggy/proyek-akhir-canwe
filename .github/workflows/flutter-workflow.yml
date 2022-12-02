@@ -21,8 +21,6 @@ jobs:
       - working-directory: ./canwe
         run: flutter format --set-exit-if-changed .
       - working-directory: ./canwe
-        run: flutter analyze .
-      - working-directory: ./canwe
         run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
