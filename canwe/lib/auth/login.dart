@@ -1,3 +1,4 @@
+import 'package:canwe/auth/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -100,6 +101,11 @@ class _LoginPageState extends State<LoginPage> {
                           if (request.loggedIn) {
                             // Code here will run if the login succeeded.
                             print("Login Succesfull");
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ProfilePage(),
+                              ),
+                            );
                           } else {
                             // Code here will run if the login failed (wrong username/password).
                             print("Login failed");

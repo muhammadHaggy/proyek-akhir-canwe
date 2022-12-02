@@ -1,4 +1,5 @@
 import 'package:canwe/auth/login.dart';
+import 'package:canwe/auth/profile.dart';
 import 'package:canwe/auth/register.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const LoginPage(),
       ),
     );
   }
