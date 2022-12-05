@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 // import 'package:canwe/page/detail.dart';
 // import 'package:canwe/components/drawer.dart';
-// import 'package:canwe/model/watch_list.dart';
+import 'package:canwe/models/donasi.dart';
 import 'package:canwe/main.dart';
-// import 'package:canwe/utils/get_my_watch_list.dart';
+import 'package:canwe/utils/get_data_donasi.dart';
 
-class MyWatchListPage extends StatefulWidget {
-  const MyWatchListPage({super.key});
+class DonasiPage extends StatefulWidget {
+  const DonasiPage({super.key});
 
   @override
-  State<MyWatchListPage> createState() => _MyWatchListPageState();
+  State<DonasiPage> createState() => _DonasiPageState();
 }
 
-class _MyWatchListPageState extends State<MyWatchListPage> {
+class _DonasiPageState extends State<DonasiPage> {
 
-  late Future<List<WatchList>> futureData;
+  late Future<List<Donasi>> futureData;
 
   @override
   void initState() {
     super.initState();
-    futureData = fetchWatchList();
+    futureData = fetchDonasi();
   }
 
   @override
@@ -27,18 +27,16 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Watch List'),
-        backgroundColor: redPrimary,
       ),
       // Menambahkan drawer menu
-      drawer: const DrawerTugas(),
-      backgroundColor: blackPrimary,
+      // drawer: const DrawerTugas(),
       body: FutureBuilder(
           future: futureData,
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return const Center(
                   child: CircularProgressIndicator(
-                    color: redPrimary,
+                    // color: redPrimary,
                   )
               );
             } else {
@@ -48,7 +46,7 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                     Text(
                       "Tidak ada Watch List :(",
                       style: TextStyle(
-                          color: whitePrimary,
+                          // color: whitePrimary,
                           fontSize: 20),
                     ),
                     SizedBox(height: 8),
@@ -59,27 +57,27 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (_, index)=> InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MyDetailPage(
-                                  title: snapshot.data![index].fields.title,
-                                  releaseDate: snapshot.data![index].fields.releaseDate,
-                                  rating: snapshot.data![index].fields.rating,
-                                  watched: snapshot.data![index].fields.watched,
-                                  review: snapshot.data![index].fields.review,
-                                )
-                            )
-                        );
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => MyDetailPage(
+                        //           title: snapshot.data![index].fields.title,
+                        //           releaseDate: snapshot.data![index].fields.releaseDate,
+                        //           rating: snapshot.data![index].fields.rating,
+                        //           watched: snapshot.data![index].fields.watched,
+                        //           review: snapshot.data![index].fields.review,
+                        //         )
+                        //     )
+                        // );
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                         padding: const EdgeInsets.all(20.0),
                         decoration: BoxDecoration(
-                          color: blackSecondary,
+                          // color: blackSecondary,
                           border: Border.all(
-                              color: (snapshot.data![index].fields.watched == 'Already') ?
-                              Colors.greenAccent : redPrimary,
+                              // color: (snapshot.data![index].fields.watched == 'Already') ?
+                              // Colors.greenAccent : redPrimary,
                               width: 3.0
                           ),
                           borderRadius: BorderRadius.circular(10.0),
@@ -96,7 +94,7 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                                   style: const TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
-                                    color: whitePrimary,
+                                    // color: whitePrimary,
                                   ),
                                 ),
                               ),
