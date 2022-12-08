@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
         body: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50.0),
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Form(
         key: _formKey,
         child: LayoutBuilder(

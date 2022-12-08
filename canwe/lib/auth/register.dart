@@ -20,102 +20,129 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Scaffold(
-        body: Form(
-      key: _formKey,
-      child: LayoutBuilder(
-        builder: (p0, p1) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: p1.maxHeight),
-              child: Container(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                hintText: "Username",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                )),
-                            onChanged: (String? value) {
-                              setState(() {
-                                username = value!;
-                              });
-                            },
-                            // Menambahkan behavior saat data disimpan
-                            onSaved: (String? value) {
-                              setState(() {
-                                username = value!;
-                              });
-                            },
-                            // Validator sebagai validasi form
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Username tidak boleh kosong';
-                              }
-                              return null;
-                            },
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: Form(
+        key: _formKey,
+        child: LayoutBuilder(
+          builder: (p0, p1) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: p1.maxHeight),
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          TweenAnimationBuilder<double>(
+                            duration: Duration(milliseconds: 500),
+                            tween: Tween(begin: 0, end: 1),
+                            builder: (_, value, __) => Opacity(
+                              opacity: value,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Icon(Icons.handshake,
+                                      size: 60, color: Color(0xff21579C)),
+                                  SizedBox(height: 25),
+                                  Text(
+                                    "Welcome,",
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 35),
+                                  ),
+                                  Text(
+                                    "Please register to continue",
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.7),
+                                        fontSize: 35),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                hintText: 'Enter your secure password',
-                                labelText: "Password",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                )),
-                            onChanged: (String? value) {
-                              setState(() {
-                                password1 = value!;
-                              });
-                            },
-                            // Menambahkan behavior saat data disimpan
-                            onSaved: (String? value) {
-                              setState(() {
-                                password1 = value!;
-                              });
-                            },
+                          SizedBox(
+                            height: 50,
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                hintText: 'Enter your password again!',
-                                labelText: "Password",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                )),
-                            onChanged: (String? value) {
-                              setState(() {
-                                password2 = value!;
-                              });
-                            },
-                            // Menambahkan behavior saat data disimpan
-                            onSaved: (String? value) {
-                              setState(() {
-                                password2 = value!;
-                              });
-                            },
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  hintText: "Username",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  )),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  username = value!;
+                                });
+                              },
+                              // Menambahkan behavior saat data disimpan
+                              onSaved: (String? value) {
+                                setState(() {
+                                  username = value!;
+                                });
+                              },
+                              // Validator sebagai validasi form
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Username tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.blue),
-                        ),
-                        onPressed: () async {
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  hintText: 'Enter your secure password',
+                                  labelText: "Password",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  )),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  password1 = value!;
+                                });
+                              },
+                              // Menambahkan behavior saat data disimpan
+                              onSaved: (String? value) {
+                                setState(() {
+                                  password1 = value!;
+                                });
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  hintText: 'Enter your password again!',
+                                  labelText: "Password",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  )),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  password2 = value!;
+                                });
+                              },
+                              // Menambahkan behavior saat data disimpan
+                              onSaved: (String? value) {
+                                setState(() {
+                                  password2 = value!;
+                                });
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      GestureDetector(
+                        onTap: () async {
                           final response = await request.login(
                               "https://canwe.pythonanywhere.com/auth/register",
                               {
@@ -131,16 +158,40 @@ class _RegisterPageState extends State<RegisterPage> {
                             print("Register Failed");
                           }
                         },
-                        child: const Text(
-                          "Register",
-                          style: TextStyle(color: Colors.white),
-                        )),
-                  ],
+                        child: Container(
+                          width: 230,
+                          height: 75,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color.fromARGB(255, 224, 227, 231),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Register",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                    fontSize: 19),
+                              ),
+                              SizedBox(width: 15),
+                              Icon(
+                                Icons.arrow_forward_rounded,
+                                color: Colors.black,
+                                size: 26,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     ));
   }
