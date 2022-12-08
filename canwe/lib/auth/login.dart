@@ -150,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                             'username': username,
                             'password': password,
                           });
-                          if (request.loggedIn) {
+                          if (request.loggedIn && response['status']) {
                             // Code here will run if the login succeeded.
                             print("Login Succesfull");
                             if (!mounted) return;

@@ -1,4 +1,5 @@
 import 'package:canwe/auth/login.dart';
+import 'package:canwe/auth/profile.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -124,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               obscureText: true,
                               decoration: InputDecoration(
                                   hintText: 'Enter your password again!',
-                                  labelText: "Password",
+                                  labelText: "Confirm Password",
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5.0),
                                   )),
@@ -178,12 +179,34 @@ class _RegisterPageState extends State<RegisterPage> {
                                 'password1': password1,
                                 'password2': password2,
                               });
-                          if (request.loggedIn) {
+                          if (request.loggedIn && response['status']) {
                             // Code here will run if the login succeeded.
                             print("Register Successfull");
+                            if (!mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                response['message'],
+                                style: const TextStyle(),
+                              ),
+                            ));
+                            Future.delayed(
+                                Duration(seconds: 1),
+                                () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => ProfilePage(),
+                                      ),
+                                    ));
                           } else {
                             // Code here will run if the login failed (wrong username/password).
                             print("Register Failed");
+                            if (!mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                response['message'],
+                                style: const TextStyle(),
+                              ),
+                              backgroundColor: Colors.red,
+                            ));
                           }
                         },
                         child: Container(
