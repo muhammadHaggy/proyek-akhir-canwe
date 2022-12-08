@@ -129,13 +129,29 @@ class _LoginPageState extends State<LoginPage> {
                             // Code here will run if the login succeeded.
                             print("Login Succesfull");
                             if (!mounted) return;
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => ProfilePage(),
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                response['message'],
+                                style: const TextStyle(),
                               ),
-                            );
+                            ));
+                            Future.delayed(
+                                Duration(seconds: 1),
+                                () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => ProfilePage(),
+                                      ),
+                                    ));
                           } else {
                             // Code here will run if the login failed (wrong username/password).
+                            if (!mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                response['message'],
+                                style: const TextStyle(),
+                              ),
+                              backgroundColor: Colors.red,
+                            ));
                             print("Login failed");
                           }
                         },
