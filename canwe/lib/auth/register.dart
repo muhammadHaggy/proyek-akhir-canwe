@@ -1,3 +1,5 @@
+import 'package:canwe/auth/login.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -140,6 +142,32 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: "Already have an account? ",
+                          children: [
+                            TextSpan(
+                              text: 'Login',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginPage(),
+                                        ),
+                                      )
+                                    },
+                            ),
+                          ],
+                        ),
                       ),
                       GestureDetector(
                         onTap: () async {

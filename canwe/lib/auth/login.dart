@@ -1,4 +1,6 @@
 import 'package:canwe/auth/profile.dart';
+import 'package:canwe/auth/register.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -65,58 +67,81 @@ class _LoginPageState extends State<LoginPage> {
                           SizedBox(
                             height: 50,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  hintText: "Username",
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  )),
-                              onChanged: (String? value) {
-                                setState(() {
-                                  username = value!;
-                                });
-                              },
-                              // Menambahkan behavior saat data disimpan
-                              onSaved: (String? value) {
-                                setState(() {
-                                  username = value!;
-                                });
-                              },
-                              // Validator sebagai validasi form
-                              validator: (String? value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Username tidak boleh kosong';
-                                }
-                                return null;
-                              },
-                            ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                hintText: "Username",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                )),
+                            onChanged: (String? value) {
+                              setState(() {
+                                username = value!;
+                              });
+                            },
+                            // Menambahkan behavior saat data disimpan
+                            onSaved: (String? value) {
+                              setState(() {
+                                username = value!;
+                              });
+                            },
+                            // Validator sebagai validasi form
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Username tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  hintText: 'Enter your secure password',
-                                  labelText: "Password",
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  )),
-                              onChanged: (String? value) {
-                                setState(() {
-                                  password = value!;
-                                });
-                              },
-                              // Menambahkan behavior saat data disimpan
-                              onSaved: (String? value) {
-                                setState(() {
-                                  password = value!;
-                                });
-                              },
-                            ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                hintText: 'Enter your secure password',
+                                labelText: "Password",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                )),
+                            onChanged: (String? value) {
+                              setState(() {
+                                password = value!;
+                              });
+                            },
+                            // Menambahkan behavior saat data disimpan
+                            onSaved: (String? value) {
+                              setState(() {
+                                password = value!;
+                              });
+                            },
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: "Don't have an account? ",
+                          children: [
+                            TextSpan(
+                              text: 'Sign Up',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RegisterPage(),
+                                        ),
+                                      )
+                                    },
+                            ),
+                          ],
+                        ),
                       ),
                       GestureDetector(
                         onTap: () async {
