@@ -1,4 +1,6 @@
+import 'package:canwe/auth/login.dart';
 import 'package:canwe/auth/profile.dart';
+import 'package:canwe/widgets/botton_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,6 +17,7 @@ class DisplayProfilePage extends StatefulWidget {
 }
 
 class _DisplayProfilePageState extends State<DisplayProfilePage> {
+  final selectedNavbarIndex = 3;
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
@@ -29,18 +32,21 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 28),
-          child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back,
-                color: Colors.grey[700],
-                size: 30,
-              )),
-        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 28),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LoginPage()));
+                },
+                child: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.grey[700],
+                  size: 30,
+                )),
+          ),
+        ],
         elevation: 0,
       ),
       body: FutureBuilder(
@@ -209,6 +215,10 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
             );
           }
         },
+      ),
+      bottomNavigationBar: MyBottomNavBar(
+        key: GlobalKey(debugLabel: "BottomNavBar"),
+        selectedIndex: selectedNavbarIndex,
       ),
     );
   }
