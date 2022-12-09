@@ -1,3 +1,4 @@
+import 'package:canwe/auth/display_profile.dart';
 import 'package:canwe/auth/login.dart';
 import 'package:canwe/auth/profile.dart';
 import 'package:canwe/auth/register.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-        home: const LoginPage(),
+        home: const DisplayProfilePage(),
       ),
     );
   }

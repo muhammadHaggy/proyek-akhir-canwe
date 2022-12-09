@@ -1,10 +1,9 @@
 import 'package:canwe/models/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'dart:convert';
+
+import 'display_profile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -29,6 +28,25 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 28),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.cancel_outlined,
+                  color: Colors.grey[700],
+                  size: 30,
+                )),
+          )
+        ],
+        leading: Container(),
+        elevation: 0,
+      ),
       body: FutureBuilder(
         future: getProfileInfo(),
         builder: (context, AsyncSnapshot<Profile> snapshot) {
@@ -55,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             children: [
                               Column(
                                 children: [
-                                  Center(
+                                  const Center(
                                     child: Padding(
                                       padding: EdgeInsets.only(bottom: 20),
                                       child: Text(
@@ -69,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       "Username",
@@ -105,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     },
                                   ),
                                   const SizedBox(height: 24),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       "First Name",
@@ -134,7 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     },
                                   ),
                                   const SizedBox(height: 24),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       "Last Name",
@@ -163,7 +181,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     },
                                   ),
                                   const SizedBox(height: 24),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       "Email Address",
@@ -192,7 +210,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     },
                                   ),
                                   const SizedBox(height: 24),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       "Tanggal Lahir",
@@ -215,7 +233,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     lastDate: DateTime.now(),
                                   ),
                                   const SizedBox(height: 24),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
                                       "Bio Singkat",
@@ -264,16 +282,38 @@ class _ProfilePageState extends State<ProfilePage> {
                                       "https://canwe.pythonanywhere.com/user/profile/json",
                                       profileData.toJson(),
                                     );
-                                    print(profileData.toJson());
-                                    print(response);
-                                    if (response["status"].toString() ==
-                                        "true") {
+                                    if (response["status"]) {
                                       // Code here will run if the login succeeded.
                                       print("Edit Profil Succesfull");
-                                      setState(() {});
+                                      if (!mounted) return;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          response['message'],
+                                          style: const TextStyle(),
+                                        ),
+                                      ));
+                                      Future.delayed(
+                                          const Duration(seconds: 1),
+                                          () => Navigator.of(context)
+                                                  .pushReplacement(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const DisplayProfilePage(),
+                                                ),
+                                              ));
                                     } else {
                                       // Code here will run if the login failed (wrong username/password).
                                       print("Edit profil failed");
+                                      if (!mounted) return;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          response['message'],
+                                          style: const TextStyle(),
+                                        ),
+                                        backgroundColor: Colors.red,
+                                      ));
                                     }
                                   }
                                 },
@@ -282,11 +322,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                   height: 45,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Color.fromARGB(255, 224, 227, 231),
+                                    color: const Color.fromARGB(
+                                        255, 224, 227, 231),
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                    children: const [
                                       Text(
                                         "Save Changes",
                                         style: TextStyle(
