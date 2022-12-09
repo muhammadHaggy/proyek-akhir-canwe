@@ -140,96 +140,105 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(
                             height: 30,
                           ),
-                          RichText(
-                            text: TextSpan(
-                              text: "Don't have an account? ",
-                              children: [
-                                TextSpan(
-                                  text: 'Sign Up',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () => {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const RegisterPage(),
-                                            ),
-                                          )
-                                        },
+                          Column(
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  text: "Don't have an account? ",
+                                  children: [
+                                    TextSpan(
+                                      text: 'Sign Up',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () => {
+                                              Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const RegisterPage(),
+                                                ),
+                                              )
+                                            },
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () async {
-                              final response = await request.login(
-                                  "https://canwe.pythonanywhere.com/auth/login",
-                                  {
-                                    'username': username,
-                                    'password': password,
-                                  });
-                              if (request.loggedIn && response['status']) {
-                                // Code here will run if the login succeeded.
-                                print("Login Succesfull");
-                                if (!mounted) return;
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                  content: Text(
-                                    response['message'],
-                                    style: const TextStyle(),
-                                  ),
-                                ));
-                                Future.delayed(
-                                    const Duration(seconds: 1),
-                                    () => Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const DisplayProfilePage(),
-                                          ),
-                                        ));
-                              } else {
-                                // Code here will run if the login failed (wrong username/password).
-                                if (!mounted) return;
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                  content: Text(
-                                    response['message'],
-                                    style: const TextStyle(),
-                                  ),
-                                  backgroundColor: Colors.red,
-                                ));
-                                print("Login failed");
-                              }
-                            },
-                            child: Container(
-                              width: 230,
-                              height: 75,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color.fromARGB(255, 224, 227, 231),
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text(
-                                    "Login",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              GestureDetector(
+                                onTap: () async {
+                                  final response = await request.login(
+                                      "https://canwe.pythonanywhere.com/auth/login",
+                                      {
+                                        'username': username,
+                                        'password': password,
+                                      });
+                                  if (request.loggedIn && response['status']) {
+                                    // Code here will run if the login succeeded.
+                                    print("Login Succesfull");
+                                    if (!mounted) return;
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(
+                                        response['message'],
+                                        style: const TextStyle(),
+                                      ),
+                                    ));
+                                    Future.delayed(
+                                        const Duration(seconds: 1),
+                                        () => Navigator.of(context)
+                                                .pushReplacement(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const DisplayProfilePage(),
+                                              ),
+                                            ));
+                                  } else {
+                                    // Code here will run if the login failed (wrong username/password).
+                                    if (!mounted) return;
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(
+                                        response['message'],
+                                        style: const TextStyle(),
+                                      ),
+                                      backgroundColor: Colors.red,
+                                    ));
+                                    print("Login failed");
+                                  }
+                                },
+                                child: Container(
+                                  width: 230,
+                                  height: 75,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: const Color.fromARGB(
+                                        255, 224, 227, 231),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Text(
+                                        "Login",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                            fontSize: 19),
+                                      ),
+                                      SizedBox(width: 15),
+                                      Icon(
+                                        Icons.arrow_forward_rounded,
                                         color: Colors.black,
-                                        fontSize: 19),
+                                        size: 26,
+                                      )
+                                    ],
                                   ),
-                                  SizedBox(width: 15),
-                                  Icon(
-                                    Icons.arrow_forward_rounded,
-                                    color: Colors.black,
-                                    size: 26,
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),

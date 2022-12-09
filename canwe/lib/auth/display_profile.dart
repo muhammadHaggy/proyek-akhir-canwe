@@ -2,8 +2,6 @@ import 'package:canwe/auth/login.dart';
 import 'package:canwe/auth/profile.dart';
 import 'package:canwe/widgets/botton_navbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 

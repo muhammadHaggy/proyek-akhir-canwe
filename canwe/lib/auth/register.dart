@@ -21,6 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           actions: [
@@ -169,97 +170,105 @@ class _RegisterPageState extends State<RegisterPage> {
                           const SizedBox(
                             height: 30,
                           ),
-                          RichText(
-                            text: TextSpan(
-                              text: "Already have an account? ",
-                              children: [
-                                TextSpan(
-                                  text: 'Login',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () => {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const LoginPage(),
-                                            ),
-                                          )
-                                        },
+                          Column(
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  text: "Already have an account? ",
+                                  children: [
+                                    TextSpan(
+                                      text: 'Login',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () => {
+                                              Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const LoginPage(),
+                                                ),
+                                              )
+                                            },
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () async {
-                              final response = await request.login(
-                                  "https://canwe.pythonanywhere.com/auth/register",
-                                  {
-                                    'username': username,
-                                    'password1': password1,
-                                    'password2': password2,
-                                  });
-                              if (request.loggedIn && response['status']) {
-                                // Code here will run if the login succeeded.
-                                print("Register Successfull");
-                                if (!mounted) return;
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                  content: Text(
-                                    response['message'],
-                                    style: const TextStyle(),
-                                  ),
-                                ));
-                                Future.delayed(
-                                    const Duration(seconds: 1),
-                                    () => Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const ProfilePage(),
-                                          ),
-                                        ));
-                              } else {
-                                // Code here will run if the login failed (wrong username/password).
-                                print("Register Failed");
-                                if (!mounted) return;
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                  content: Text(
-                                    response['message'],
-                                    style: const TextStyle(),
-                                  ),
-                                  backgroundColor: Colors.red,
-                                ));
-                              }
-                            },
-                            child: Container(
-                              width: 230,
-                              height: 75,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color.fromARGB(255, 224, 227, 231),
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    "Register",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              GestureDetector(
+                                onTap: () async {
+                                  final response = await request.login(
+                                      "https://canwe.pythonanywhere.com/auth/register",
+                                      {
+                                        'username': username,
+                                        'password1': password1,
+                                        'password2': password2,
+                                      });
+                                  if (request.loggedIn && response['status']) {
+                                    // Code here will run if the login succeeded.
+                                    print("Register Successfull");
+                                    if (!mounted) return;
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(
+                                        response['message'],
+                                        style: const TextStyle(),
+                                      ),
+                                    ));
+                                    Future.delayed(
+                                        const Duration(seconds: 1),
+                                        () => Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const ProfilePage(),
+                                              ),
+                                            ));
+                                  } else {
+                                    // Code here will run if the login failed (wrong username/password).
+                                    print("Register Failed");
+                                    if (!mounted) return;
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text(
+                                        response['message'],
+                                        style: const TextStyle(),
+                                      ),
+                                      backgroundColor: Colors.red,
+                                    ));
+                                  }
+                                },
+                                child: Container(
+                                  width: 230,
+                                  height: 75,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: const Color.fromARGB(
+                                        255, 224, 227, 231),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "Register",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                            fontSize: 19),
+                                      ),
+                                      const SizedBox(width: 15),
+                                      const Icon(
+                                        Icons.arrow_forward_rounded,
                                         color: Colors.black,
-                                        fontSize: 19),
+                                        size: 26,
+                                      )
+                                    ],
                                   ),
-                                  const SizedBox(width: 15),
-                                  const Icon(
-                                    Icons.arrow_forward_rounded,
-                                    color: Colors.black,
-                                    size: 26,
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),
