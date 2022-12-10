@@ -1,6 +1,8 @@
 import 'package:canwe/auth/display_profile.dart';
 import 'package:canwe/auth/login.dart';
 import 'package:canwe/donasi/donasi_page.dart';
+import 'package:canwe/notifikasi/notif_page.dart';
+import 'package:canwe/notifikasi/notifikasi_form_page.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +18,7 @@ class MyBottomNavBar extends StatelessWidget {
       Scaffold(),
       DonasiPage(),
       Scaffold(),
+      NotifikasiFormPage(),      
       request.loggedIn ? DisplayProfilePage() : LoginPage(),
     ];
     return BottomNavigationBar(
@@ -34,6 +37,11 @@ class MyBottomNavBar extends StatelessWidget {
           icon: Icon(Icons.create),
           label: 'Galang Dana',
           backgroundColor: Colors.purple,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.notifications),
+          label: 'Notifikasi',
+          backgroundColor: Color.fromARGB(255, 64, 128, 255),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
