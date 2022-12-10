@@ -19,8 +19,6 @@ jobs:
       - working-directory: ./canwe
         run: flutter pub get
       - working-directory: ./canwe
-        run: flutter format --set-exit-if-changed .
-      - working-directory: ./canwe
         run: flutter build apk
       - name: upload artefact to App Center
         uses: wzieba/AppCenter-Github-Action@v1
