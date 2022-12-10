@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on: 
+  # Triggers the workflow on push events but only for the main branch
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'beta'
+      - working-directory: ./canwe
+        run: flutter pub get
+      - working-directory: ./canwe
+        run: flutter format --set-exit-if-changed .
+      - working-directory: ./canwe
+        run: flutter build apk
+      - name: upload artefact to App Center
+        uses: wzieba/AppCenter-Github-Action@v1
+        with:
+          appName: canwe/canwe-android
+          token: ${{secrets.APP_CENTER_TOKEN}}
+          group: Testers
+          file: canwe/build/app/outputs/apk/release/app-release.apk
+          notifyTesters: true
+          debug: false
