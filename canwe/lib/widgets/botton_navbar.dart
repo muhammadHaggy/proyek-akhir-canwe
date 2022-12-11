@@ -26,7 +26,7 @@ class MyBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.handshake_rounded),
@@ -36,7 +36,7 @@ class MyBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.create),
           label: 'Galang Dana',
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.notifications),
@@ -46,11 +46,12 @@ class MyBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profil',
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.green,
         ),
       ],
       currentIndex: selectedIndex,
-      selectedItemColor: Colors.amber[800],
+      unselectedItemColor: Colors.grey[350],
+      selectedItemColor: Colors.white,
       onTap: (value) {
         Navigator.push(
             context, MaterialPageRoute(builder: ((context) => route[value])));
