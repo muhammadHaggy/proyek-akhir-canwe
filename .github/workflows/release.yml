@@ -42,5 +42,5 @@ jobs:
           artifacts: "canwe/build/app/outputs/apk/release/app-release.apk"
           body: "Published at ${{ steps.date.outputs.date }}"
           name: "v${{ steps.version.outputs.version }}"
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }} # Provided by Github Actions
           tag: ${{ steps.version.outputs.version }}
