@@ -56,8 +56,22 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
                                                         MyNotifikasitDetailPage(notif: snapshot.data![index]),
                                                     ));
                                             },
-                                                leading: Image.network('https://i.imgur.com/dK4jT6U.png'),
-                                                title: Text(snapshot.data![index].fields.title),
+                                                leading: Image(image: NetworkImage('https://i.imgur.com/dK4jT6U.png')),
+                                                
+                                                title  : RichText(
+                                                    text: TextSpan(
+                                                      // Note: Styles for TextSpans must be explicitly defined.
+                                                      // Child text spans will inherit styles from parent
+                                                      style: const TextStyle(
+                                                        fontSize: 14.0,
+                                                        color: Colors.black,
+                                                      ),
+                                                      children: <TextSpan>[
+                                                        TextSpan(text: snapshot.data![index].fields.title , style: const TextStyle(fontWeight: FontWeight.bold)),
+                                                        TextSpan(text: ' mengirimkan pesan'),
+                                                      ],  
+                                                    ),
+                                                  ),
                                                 subtitle: Text(snapshot.data![index].fields.description),
                                             )
                                         ),

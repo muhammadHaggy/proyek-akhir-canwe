@@ -1,6 +1,7 @@
 import 'package:canwe/auth/login.dart';
 import 'package:canwe/auth/profile.dart';
 import 'package:canwe/widgets/botton_navbar.dart';
+import 'package:canwe/widgets/logged_in_required.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -21,10 +22,15 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
     final request = context.watch<CookieRequest>();
     final columnHeight = 40.0;
 
-    Future<Profile> getProfileInfo() async {
-      final response = await request
-          .get("https://canwe.pythonanywhere.com/user/profile/json");
-      return Profile.fromJson(response);
+    Future<Profile?> getProfileInfo() async {
+      try {
+        final response = await request
+            .get("https://canwe.pythonanywhere.com/user/profile/json");
+        return Profile.fromJson(response);
+      } on FormatException catch (err) {
+        print(err);
+        return null;
+      }
     }
 
     return Scaffold(
@@ -49,12 +55,15 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
       ),
       body: FutureBuilder(
         future: getProfileInfo(),
-        builder: (context, AsyncSnapshot<Profile> snapshot) {
+        builder: (context, AsyncSnapshot<Profile?> snapshot) {
           if (snapshot.hasError) {
             return Text(snapshot.error.toString());
           }
-          if (snapshot.data == null) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.data == null) {
+            return const LoggedInRequired();
           } else {
             var profile = snapshot.data!;
             return Padding(
@@ -80,10 +89,13 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       style: TextStyle(
                                         fontSize: 30,
                                         fontWeight: FontWeight.w700,
-                                        color: Color.fromRGBO(64, 105, 225, 1),
+                                        color: Colors.black,
                                       ),
                                     ),
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 20,
                                 ),
                                 Table(
                                   columnWidths: {
