@@ -12,12 +12,12 @@ class NotifikasiFormPage extends StatefulWidget {
   State<NotifikasiFormPage> createState() => _SendNotificationPageState();
 }
 
-class Notifikasi {
+class Notif {
   // late int user;
   late String title;
   late String description;
 
-  Notifikasi(
+  Notif(
       { required this.title, required this.description});
 }
 
@@ -39,7 +39,8 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
         );
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const NotifikasiPage()),
+              MaterialPageRoute(builder: (context) => 
+              const NotifikasiPage()),
             );
     }
 
@@ -49,7 +50,6 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
       appBar: AppBar(
         title: Text('Form Notifikasi'),
         backgroundColor: Color.fromARGB(255, 225, 139, 122),
-
       ),
       body: Form(
         key: _formKey,

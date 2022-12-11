@@ -23,3 +23,20 @@ Future<List<Notifikasi>> fetchNotifikasi() async {
   }
   return listNotifikasi;
 }
+// https://canwe.pythonanywhere.com/notifikasi/delete_flutter/49/
+Future<List<Notifikasi>> deleteAlbum(String id) async {
+  var url = Uri.parse('https://canwe.pythonanywhere.com/notifikasi/delete/$id/');
+  var response = await http.delete(
+    url,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+  );
+
+  var data = jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+  
+  List<Notifikasi> listNotifikasi = [];
+  
+  return listNotifikasi;
+}
