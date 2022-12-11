@@ -34,7 +34,7 @@ jobs:
         run: echo "::set-output name=date::$(TZ='Asia/Jakarta' date +'%A %d-%m-%Y %T WIB')"
       - name: Get version from pubspec.yaml
         id: version
-        run: echo "::set-output name=version::$(grep "version:" pubspec.yaml | cut -c10-)"
+        run: echo "::set-output name=version::$(grep "version:" canwe/pubspec.yaml | cut -c10-)"
       - name: Release APK
         uses: ncipollo/release-action@v1
         with:
