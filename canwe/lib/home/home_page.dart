@@ -29,11 +29,11 @@ class _HomePageState extends State<HomePage> {
               Stack(
                 children: <Widget>[
                   Container(
-                    height: height * 0.3,
+                    height: height * 0.5,
                     width: width,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("https://canwe.pythonanywhere.com/cdn.pixabay.com/photo/2017/02/03/17/41/poverty-2035694_960_720.jpg"),
+                        image: NetworkImage("https://cdn.pixabay.com/photo/2017/02/03/17/41/poverty-2035694_960_720.jpg"),
                         fit: BoxFit.cover )),
                     child: Container(
                       decoration: BoxDecoration(
@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage> {
 
                   Positioned(
                     top: 50,
+                    bottom: 50,
                     left: 20,
                     right: 20,
                     child: RichText(
@@ -125,9 +126,9 @@ class _HomePageState extends State<HomePage> {
               Stack(
                 children: [
                   Container(
-                    height: height * 0.25,
+                    height: height * 0.8,
                     width: width,
-                    color: Color.fromARGB(248, 5, 17, 0)
+                    color: Color.fromARGB(248, 5, 17, 0),
                   ),
 
                   Positioned(
@@ -138,6 +139,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
+                            Image.network("https://images.unsplash.com/photo-1437914983566-976d85602771?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"),
                             const SizedBox(
                               height: 10,
                             ),
@@ -190,7 +192,16 @@ class _HomePageState extends State<HomePage> {
               Stack(
                 children: [
                   Container(
-                    height: height * 0.25,
+                    height: height * 0.02,
+                    width: width,
+                  ),
+                ],
+              ),
+
+              Stack(
+                children: [
+                  Container(
+                    height: height * 0.8,
                     width: width,
                     color: Color.fromARGB(248, 5, 17, 0)
                   ),
@@ -203,6 +214,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
+                            Image.network("https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"),
                             const SizedBox(
                               height: 10,
                             ),
@@ -263,6 +275,7 @@ class _HomePageState extends State<HomePage> {
 
                   Positioned(
                     top: 50,
+                    bottom: 50,
                     left: 20,
                     right: 20,
                     child: RichText(

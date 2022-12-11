@@ -72,7 +72,7 @@ class _ShowQuestPageState extends State<ShowQuestPage> {
                                 children: [ Text(
                                   "${snapshot.data![index].fields.question}",
                                   style: const TextStyle(
-                                  fontSize: 18.0,
+                                  fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.white
                                   ),
