@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:canwe/models/notifikasi.dart';
+import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:intl/intl.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class MyNotifikasitDetailPage extends StatelessWidget {
   final Notifikasi notif;
@@ -9,9 +11,11 @@ class MyNotifikasitDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Notifikasi'),
+        backgroundColor: Color.fromARGB(255, 225, 139, 122),
       ),
       body: Row(
         children: <Widget>[
@@ -32,18 +36,6 @@ class MyNotifikasitDetailPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 40),
-                      // ListTile(
-                      //   leading: const Text(
-                      //     'Deskripsi: ' ,
-                      //     style: TextStyle(
-                      //         fontSize: 16, fontWeight: FontWeight.bold),
-                      //   ),
-                      //   trailing: Text(
-                      //     notif.fields.description,
-                      //     style: const TextStyle(fontSize: 16),
-                      //   ),
-                      //   dense: true,
-                      // ), 
                       RichText(
                           text: TextSpan(
                             // Note: Styles for TextSpans must be explicitly defined.
@@ -60,50 +52,9 @@ class MyNotifikasitDetailPage extends StatelessWidget {
                             ],  
                           ),
                         )      
-       
                     ],
                   ),
                   const Spacer(flex: 5),
-                  Row(children: [
-                    const SizedBox(height: 5),
-                    TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        padding: const EdgeInsets.all(15.0),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        alignment: Alignment.center),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      "Back",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () async{
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      "Delete",
-                      style: TextStyle(color: Colors.white),
-                    ),),
-                  ],)
-                  
-                  
-                  // TextButton(
-                  //   style: TextButton.styleFrom(
-                  //       backgroundColor: Colors.red,
-                  //       padding: const EdgeInsets.all(15.0),
-                  //       alignment: Alignment.topLeft),
-                  //   onPressed: () {
-                  //     Navigator.pop(context);
-                  //   },
-                  //   child: const Text(
-                  //     "Delete",
-                  //     style: TextStyle(color: Colors.white),
-                  //   ),
-                  // ),
                 ],
               ),
             ),

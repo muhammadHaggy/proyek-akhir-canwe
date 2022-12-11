@@ -1,17 +1,19 @@
+import 'package:canwe/notifikasi/notifikasi_form_page.dart';
 import 'package:canwe/utils/fetch_notifikasi.dart';
 import 'package:flutter/material.dart';
 import 'package:canwe/notifikasi/notifikasi_detail_page.dart';
 import '../models/notifikasi.dart';
+import 'package:canwe/notifikasi/notif_page.dart';
 
 
-class NotifikasiPage extends StatefulWidget {
-  const NotifikasiPage({super.key});
+class NotifikasiAdminPage extends StatefulWidget {
+  const NotifikasiAdminPage({super.key});
 
   @override
-  State<NotifikasiPage> createState() => _NotifikasiPageState();
+  State<NotifikasiAdminPage> createState() => _NotifikasiAdminPageState();
 }
 
-class _NotifikasiPageState extends State<NotifikasiPage> {
+class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
     late Future<List<Notifikasi>> _notifikasi;
     
     @override
@@ -28,13 +30,16 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
             backgroundColor: Color.fromARGB(255, 225, 139, 122),
             ),
             body: FutureBuilder(
+                    
                     future: _notifikasi,
                     builder: (context, AsyncSnapshot snapshot) {
+                        
                         if (snapshot.data == null) {
                             return const Center(child: CircularProgressIndicator());
 
                         } else {
                             if (!snapshot.hasData) {
+                            
                                 return Column(
                                     children: const [
                                     Text("Tidak ada Notifikasi", style: TextStyle(color: Color(0xff59A5D8), fontSize: 20
@@ -116,13 +121,25 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
                                                 subtitle: Text(snapshot.data![index].fields.description),
                                             )
                                         ),
-                                    )
-                                    
-                            );
+                                    ),
+
+                            ); 
                             }
                         }
                     }
+                    
                 ),
+              floatingActionButton: FloatingActionButton(
+                backgroundColor: Colors.red,
+                onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotifikasiFormPage(),
+                )),
+                tooltip: 'Add',
+                child: const Icon(Icons.add),
+              )
+                            , 
         );
     }
 }
