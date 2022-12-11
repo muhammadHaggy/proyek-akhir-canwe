@@ -3,6 +3,7 @@ import 'package:canwe/auth/login.dart';
 import 'package:canwe/donasi/donasi_page.dart';
 import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:canwe/notifikasi/notifikasi_form_page.dart';
+import 'package:canwe/notifikasi/notif_admin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,7 @@ class MyBottomNavBar extends StatelessWidget {
       Scaffold(),
       DonasiPage(),
       Scaffold(),
-      NotifikasiFormPage(),      
+      request.jsonData["is_admin"] == true? NotifikasiAdminPage(): NotifikasiPage(),      
       request.loggedIn ? DisplayProfilePage() : LoginPage(),
     ];
     return BottomNavigationBar(
