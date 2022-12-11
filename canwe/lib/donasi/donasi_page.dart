@@ -83,6 +83,7 @@ class _DonasiPageState extends State<DonasiPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          Image.asset("assets${snapshot.data![index].fields.urlFoto}"),
                           Text(
                             "${snapshot.data![index].fields.nama}",
                             style: const TextStyle(
