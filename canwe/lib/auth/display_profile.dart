@@ -15,7 +15,7 @@ class DisplayProfilePage extends StatefulWidget {
 }
 
 class _DisplayProfilePageState extends State<DisplayProfilePage> {
-  final selectedNavbarIndex = 3;
+  final selectedNavbarIndex = 4;
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
