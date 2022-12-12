@@ -10,7 +10,9 @@
 5. 2106707076 - Muhammad Hadziq Razin
 <br>
 
-### 🔗Link web: https://canwe.pythonanywhere.com/
+### 🔗📱Link apk : install.appcenter.ms/users/canwe/apps/canwe-android/distribution_groups/testers 
+
+### 🔗💻Link web: https://canwe.pythonanywhere.com/
 
 
 ### 📖 Cerita CanWe
