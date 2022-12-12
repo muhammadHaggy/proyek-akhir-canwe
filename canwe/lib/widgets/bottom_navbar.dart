@@ -3,6 +3,7 @@ import 'package:canwe/auth/login.dart';
 import 'package:canwe/auth/moderasi_galang_dana.dart';
 import 'package:canwe/donasi/donasi_page.dart';
 import 'package:canwe/galang_dana/galang_dana_page.dart';
+import 'package:canwe/home/home_page.dart';
 import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:canwe/notifikasi/notifikasi_form_page.dart';
 import 'package:canwe/notifikasi/notif_admin_page.dart';
@@ -19,7 +20,7 @@ class MyBottomNavBar extends StatelessWidget {
     final request = context.watch<CookieRequest>();
     final List<Widget> route = request.loggedIn
         ? [
-            Scaffold(),
+            HomePage(),
             DonasiPage(),
             request.jsonData["is_admin"] ? ModerasiGalangDana() : GalangDanaPage(),
             request.jsonData["is_admin"]
@@ -28,7 +29,7 @@ class MyBottomNavBar extends StatelessWidget {
             DisplayProfilePage(),
           ]
         : [
-            Scaffold(),
+            HomePage(),
             LoginPage(),
             LoginPage(),
             LoginPage(),
