@@ -1,8 +1,5 @@
-import 'package:canwe/models/donasi.dart';
 import 'package:canwe/models/moderasi_donasi.dart';
 import 'package:canwe/widgets/botton_navbar.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +43,7 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Moderasi Konten",
           style: TextStyle(color: Colors.black),
         ),
@@ -78,7 +75,7 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
                         children: [
                           ListTile(
                             leading: ConstrainedBox(
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 minWidth: 44,
                                 minHeight: 44,
                                 maxWidth: 64,
@@ -109,9 +106,9 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
                                   ));
                                   setState(() {});
                                 }),
-                                child: Text("Approve"),
+                                child: const Text("Approve"),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 8,
                               ),
                               TextButton(
@@ -128,9 +125,9 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
                                   ));
                                   setState(() {});
                                 }),
-                                child: Text("Reject"),
+                                child: const Text("Reject"),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 8,
                               ),
                             ],
@@ -150,7 +147,7 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
             }
           })),
       bottomNavigationBar: MyBottomNavBar(
-        selectedIndex: 2,
+        selectedIndex: 1,
       ),
     );
   }

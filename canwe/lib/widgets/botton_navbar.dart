@@ -19,8 +19,8 @@ class MyBottomNavBar extends StatelessWidget {
     final List<Widget> route = request.loggedIn
         ? [
             Scaffold(),
-            DonasiPage(),
-            request.jsonData["is_admin"] ? ModerasiGalangDana() : Scaffold(),
+            request.jsonData["is_admin"] ? ModerasiGalangDana() : DonasiPage(),
+            Scaffold(),
             request.jsonData["is_admin"]
                 ? NotifikasiAdminPage()
                 : NotifikasiPage(),
@@ -34,15 +34,19 @@ class MyBottomNavBar extends StatelessWidget {
             LoginPage(),
           ];
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',
           backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.handshake_rounded),
-          label: 'Donasi',
+          icon: request.loggedIn && request.jsonData["is_admin"]
+              ? Icon(Icons.admin_panel_settings)
+              : Icon(Icons.handshake_rounded),
+          label: request.loggedIn && request.jsonData["is_admin"]
+              ? "Moderasi"
+              : 'Donasi',
           backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
