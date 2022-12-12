@@ -99,6 +99,14 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
                                 onPressed: (() async {
                                   final response =
                                       await approveDonasi(donasi.pk);
+                                  if (!mounted) return;
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text(
+                                      response['message'],
+                                      style: const TextStyle(),
+                                    ),
+                                  ));
                                   setState(() {});
                                 }),
                                 child: Text("Approve"),
@@ -108,7 +116,16 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
                               ),
                               TextButton(
                                 onPressed: (() async {
-                                  await rejectDonasi(donasi.pk);
+                                  final response =
+                                      await rejectDonasi(donasi.pk);
+                                  if (!mounted) return;
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text(
+                                      response['message'],
+                                      style: const TextStyle(),
+                                    ),
+                                  ));
                                   setState(() {});
                                 }),
                                 child: Text("Reject"),
@@ -133,7 +150,7 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
             }
           })),
       bottomNavigationBar: MyBottomNavBar(
-        selectedIndex: 1,
+        selectedIndex: 2,
       ),
     );
   }
