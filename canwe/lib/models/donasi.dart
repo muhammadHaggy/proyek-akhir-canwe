@@ -16,12 +16,12 @@ class Donasi {
   List<Datum> data;
 
   factory Donasi.fromJson(Map<String, dynamic> json) => Donasi(
-    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-  );
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-  };
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+      };
 }
 
 class Datum {
@@ -34,14 +34,14 @@ class Datum {
   Fields fields;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-    pk: json["pk"],
-    fields: Fields.fromJson(json["fields"]),
-  );
+        pk: json["pk"],
+        fields: Fields.fromJson(json["fields"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "pk": pk,
-    "fields": fields.toJson(),
-  };
+        "pk": pk,
+        "fields": fields.toJson(),
+      };
 }
 
 class Fields {
@@ -57,7 +57,7 @@ class Fields {
   });
 
   String deskripsi;
-  bool isApproved;
+  bool? isApproved;
   String nama;
   String penggalang;
   int target;
@@ -66,24 +66,24 @@ class Fields {
   int terkumpul;
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(
-    deskripsi: json["deskripsi"],
-    isApproved: json["is_approved"],
-    nama: json["nama"],
-    penggalang: json["penggalang"],
-    target: json["target"],
-    tipe: json["tipe"],
-    urlFoto: json["urlFoto"],
-    terkumpul: json["terkumpul"],
-  );
+        deskripsi: json["deskripsi"],
+        isApproved: json["is_approved"],
+        nama: json["nama"],
+        penggalang: json["penggalang"],
+        target: json["target"],
+        tipe: json["tipe"],
+        urlFoto: json["urlFoto"],
+        terkumpul: json["terkumpul"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "deskripsi": deskripsi,
-    "is_approved": isApproved,
-    "nama": nama,
-    "penggalang": penggalang,
-    "target": target,
-    "tipe": tipe,
-    "urlFoto": urlFoto,
-    "terkumpul": terkumpul,
-  };
+        "deskripsi": deskripsi,
+        "is_approved": isApproved,
+        "nama": nama,
+        "penggalang": penggalang,
+        "target": target,
+        "tipe": tipe,
+        "urlFoto": urlFoto,
+        "terkumpul": terkumpul,
+      };
 }

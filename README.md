@@ -1,6 +1,6 @@
 # CanWe <img src="https://cdn-icons-png.flaticon.com/128/2904/2904948.png" width="30" height="30">
 
-![Heroku workflow](https://github.com/muhammadHaggy/tugas-kelompok/actions/workflows/dpl.yml/badge.svg)
+[![Build and Deploy](https://github.com/muhammadHaggy/proyek-akhir-canwe/actions/workflows/release.yml/badge.svg)](https://github.com/muhammadHaggy/proyek-akhir-canwe/actions/workflows/release.yml)
 
 ### 😎 Nama Anggota
 1. 2106750370 - Muhammad Haggy
@@ -9,6 +9,8 @@
 4. 2106751474 - Maritza Rahayu Indriyani
 5. 2106707076 - Muhammad Hadziq Razin
 <br>
+### 🔗Link web: https://canwe.pythonanywhere.com/
+
 
 ### 📖 Cerita CanWe
 Menurut Global Hunger Index (GHI), tingkat kelaparan Indonesia menempati urutan ketiga tertinggi di Asia Tenggara pada 2021. Indonesia mendapatkan skor indeks sebesar 18 poin atau termasuk ke dalam level moderat. GHI menggambarkan situasi kelaparan suatu negara yang berhubungan dengan kebutuhan dasar fisiologis manusia, yaitu kebutuhan pangan dan nutrisi. Skor indeks GHI didasarkan pada empat komponen, yaitu kondisi kurang gizi, anak yang kurus, stunting anak, dan kematian anak.
