@@ -1,5 +1,5 @@
 import 'package:canwe/auth/login.dart';
-import 'package:canwe/widgets/botton_navbar.dart';
+import 'package:canwe/widgets/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
 class LoggedInRequired extends StatelessWidget {

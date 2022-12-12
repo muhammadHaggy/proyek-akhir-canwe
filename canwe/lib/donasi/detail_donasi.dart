@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:intl/intl.dart';
-import 'package:canwe/widgets/botton_navbar.dart';
+import 'package:canwe/widgets/bottom_navbar.dart';
 
 
 

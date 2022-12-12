@@ -1,6 +1,6 @@
 import 'package:canwe/auth/login.dart';
 import 'package:canwe/auth/profile.dart';
-import 'package:canwe/widgets/botton_navbar.dart';
+import 'package:canwe/widgets/bottom_navbar.dart';
 import 'package:canwe/widgets/logged_in_required.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';

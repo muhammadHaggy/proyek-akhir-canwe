@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:canwe/donasi/detail_donasi.dart';
 import 'package:canwe/models/donasi.dart';
 import 'package:canwe/utils/get_data_donasi.dart';
-import 'package:canwe/widgets/botton_navbar.dart';
+import 'package:canwe/widgets/bottom_navbar.dart';
 import 'package:intl/intl.dart';
 
 

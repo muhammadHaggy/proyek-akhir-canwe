@@ -4,7 +4,7 @@ import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:canwe/widgets/botton_navbar.dart';
+import 'package:canwe/widgets/bottom_navbar.dart';
 
 class NotifikasiFormPage extends StatefulWidget {
   const NotifikasiFormPage({super.key});
