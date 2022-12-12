@@ -2,6 +2,8 @@ import 'package:canwe/utils/fetch_notifikasi.dart';
 import 'package:flutter/material.dart';
 import 'package:canwe/notifikasi/notifikasi_detail_page.dart';
 import '../models/notifikasi.dart';
+import 'package:canwe/widgets/botton_navbar.dart';
+
 
 
 class NotifikasiPage extends StatefulWidget {
@@ -25,7 +27,7 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
         return Scaffold(
             appBar: AppBar(
             title: const Text('Notifikasi'),
-            backgroundColor: Color(0xFF048353),
+            backgroundColor: Colors.green,
             ),
             body: FutureBuilder(
                     future: _notifikasi,
@@ -75,7 +77,7 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
                                                       child: CircleAvatar(
                                                         child: Text("W",
                                                         style: const TextStyle(fontWeight: FontWeight.bold)),                             
-                                                        backgroundColor: Colors.purple,
+                                                        backgroundColor: Color.fromARGB(255, 191, 118, 204),
                                                         foregroundColor: Colors.white,
                                                       ),
                                                     ),
@@ -123,6 +125,10 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
                         }
                     }
                 ),
+                bottomNavigationBar: MyBottomNavBar(
+                      key: GlobalKey(debugLabel: "BottomNavBar"),
+                      selectedIndex: 3,
+                    ),
         );
     }
 }

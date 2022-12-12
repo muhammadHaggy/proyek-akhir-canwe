@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:canwe/models/notifikasi.dart';
-import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:intl/intl.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:canwe/widgets/botton_navbar.dart';
+
 
 class MyNotifikasitDetailPage extends StatelessWidget {
   final Notifikasi notif;
@@ -15,7 +15,7 @@ class MyNotifikasitDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Notifikasi'),
-        backgroundColor: Color(0xFF048353),
+        backgroundColor: Colors.green,
       ),
       body: Row(
         children: <Widget>[
@@ -61,6 +61,10 @@ class MyNotifikasitDetailPage extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: MyBottomNavBar(
+                      key: GlobalKey(debugLabel: "BottomNavBar"),
+                      selectedIndex: 3,
+            ),
     );
   }
 }

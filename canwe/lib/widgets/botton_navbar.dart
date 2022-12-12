@@ -57,7 +57,7 @@ class MyBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.notifications),
           label: 'Notifikasi',
-          backgroundColor: Color.fromARGB(255, 64, 128, 255),
+          backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),

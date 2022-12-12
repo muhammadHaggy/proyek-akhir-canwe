@@ -4,6 +4,7 @@ import 'package:canwe/utils/fetch_notifikasi.dart';
 import 'package:flutter/material.dart';
 import 'package:canwe/notifikasi/notifikasi_detail_page.dart';
 import '../models/notifikasi.dart';
+import 'package:canwe/widgets/botton_navbar.dart';
 
 
 class NotifikasiAdminPage extends StatefulWidget {
@@ -27,7 +28,7 @@ class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
         return Scaffold(
             appBar: AppBar(
             title: const Text('Notifikasi'),
-            backgroundColor: Color(0xFF048353),
+            backgroundColor: Colors.green,
             ),
             body: FutureBuilder(
                     future: _notifikasi,
@@ -77,7 +78,7 @@ class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
                                                       child: CircleAvatar(
                                                         child: Text("W",
                                                         style: const TextStyle(fontWeight: FontWeight.bold)),                             
-                                                        backgroundColor: Colors.purple,
+                                                        backgroundColor: Color.fromARGB(255, 191, 118, 204),
                                                         foregroundColor: Colors.white,
                                                       ),
                                                     ),
@@ -134,7 +135,11 @@ class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
                     ),
                   tooltip: 'Add',
                   child: const Icon(Icons.add),
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xFF048353),
+            ),
+            bottomNavigationBar: MyBottomNavBar(
+                      key: GlobalKey(debugLabel: "BottomNavBar"),
+                      selectedIndex: 3,
             ),
         );
     }

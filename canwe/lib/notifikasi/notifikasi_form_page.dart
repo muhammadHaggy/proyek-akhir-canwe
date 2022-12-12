@@ -4,6 +4,7 @@ import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:canwe/widgets/botton_navbar.dart';
 
 class NotifikasiFormPage extends StatefulWidget {
   const NotifikasiFormPage({super.key});
@@ -49,7 +50,7 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Form Notifikasi'),
-        backgroundColor: Color(0xFF048353),
+        backgroundColor: Colors.green,
       ),
       body: Form(
         key: _formKey,
@@ -62,7 +63,7 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.notifications, color: Color.fromARGB(255, 94, 179, 90)),
+                    Icon(Icons.notifications, color: Color(0xFF048353)),
                     Text("Kirim Notifikasi", style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -168,7 +169,7 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
                   alignment: Alignment.bottomCenter,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 94, 179, 90),
+                        backgroundColor: Color(0xFF048353),
                         padding: const EdgeInsets.all(20.0),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         alignment: Alignment.center),
@@ -186,6 +187,10 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
           ),
         ),
       ),
+      bottomNavigationBar: MyBottomNavBar(
+                      key: GlobalKey(debugLabel: "BottomNavBar"),
+                      selectedIndex: 3,
+            ),
     );
   }
 }
