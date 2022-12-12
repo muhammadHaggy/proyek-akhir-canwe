@@ -1,5 +1,6 @@
 import 'package:canwe/auth/display_profile.dart';
 import 'package:canwe/auth/login.dart';
+import 'package:canwe/auth/moderasi_galang_dana.dart';
 import 'package:canwe/donasi/donasi_page.dart';
 import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:canwe/notifikasi/notifikasi_form_page.dart';
@@ -15,6 +16,7 @@ class MyBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+<<<<<<< HEAD
     final List<Widget> route = [
       Scaffold(),
       DonasiPage(),
@@ -22,6 +24,25 @@ class MyBottomNavBar extends StatelessWidget {
       request.jsonData["is_admin"] == true? NotifikasiAdminPage(): NotifikasiPage(),      
       request.loggedIn ? DisplayProfilePage() : LoginPage(),
     ];
+=======
+    final List<Widget> route = request.loggedIn
+        ? [
+            Scaffold(),
+            DonasiPage(),
+            request.jsonData["is_admin"] ? ModerasiGalangDana() : Scaffold(),
+            request.jsonData["is_admin"]
+                ? NotifikasiAdminPage()
+                : NotifikasiPage(),
+            DisplayProfilePage(),
+          ]
+        : [
+            Scaffold(),
+            LoginPage(),
+            LoginPage(),
+            LoginPage(),
+            LoginPage(),
+          ];
+>>>>>>> c3fbcb404f0a98804da7da2e86a131cbe40266db
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(

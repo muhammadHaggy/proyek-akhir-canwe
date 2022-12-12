@@ -11,7 +11,7 @@ class LoggedInRequired extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Edit Profile',
+            'Silahkan login terlebih dahulu!',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w700,
