@@ -12,12 +12,12 @@ class NotifikasiFormPage extends StatefulWidget {
   State<NotifikasiFormPage> createState() => _SendNotificationPageState();
 }
 
-class Notifikasi {
+class Notif {
   // late int user;
   late String title;
   late String description;
 
-  Notifikasi(
+  Notif(
       { required this.title, required this.description});
 }
 
@@ -39,7 +39,8 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
         );
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const NotifikasiPage()),
+              MaterialPageRoute(builder: (context) => 
+              const NotifikasiPage()),
             );
     }
 
@@ -48,6 +49,7 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Form Notifikasi'),
+        backgroundColor: Color.fromARGB(255, 225, 139, 122),
       ),
       body: Form(
         key: _formKey,
@@ -56,19 +58,40 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
+                SizedBox(height: 60),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.notifications, color: Color.fromARGB(255, 94, 179, 90)),
+                    Text("Kirim Notifikasi", style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    )),
+                  ],
+                ),
+                SizedBox(height: 30),
                 Padding(
                   // Menggunakan padding sebesar 8 pixels
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: Pendidikan",
-                      labelText: "Kategori",
-                       // Menambahkan icon agar lebih intuitif
-                      icon: const Icon(Icons.category),
-                      // Menambahkan circular border agar lebih rapi
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.green),
                       ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      hintText: "Contoh: WeCan" ,
+                      labelText: "Nama akun Pengirim",
+                      labelStyle:
+                                TextStyle(fontSize: 16, color: Colors.green),
+                       // Menambahkan icon agar lebih intuitif
+                      prefixIcon: Icon(
+                          Icons.person,
+                          color: Colors.green,
+                        ),
+                      // Menambahkan circular border agar lebih rapi
                     ),
                     // Menambahkan behavior saat nama diketik
                     onChanged: (String? value) {
@@ -91,18 +114,28 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
                     },
                   ),
                 ),
+                SizedBox(height: 10),
                 Padding(
                   // Menggunakan padding sebesar 8 pixels
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: Kategori ini adalah kategori terbaik",
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                      hintText: "Contoh: Sumbangan makanan ke Sumba",
                       labelText: "Deskripsi",
+                      labelStyle:
+                          TextStyle(fontSize: 16, color: Colors.green),
                       // Menambahkan icon agar lebih intuitif
-                      icon: const Icon(Icons.description),
+                      prefixIcon: Icon(
+                          Icons.description,
+                          color: Colors.green,
+                        ),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                     // Menambahkan behavior saat nama diketik
@@ -130,13 +163,13 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
                     },
                   ),
                 ),
-
+                SizedBox(height: 20),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        padding: const EdgeInsets.all(16.0),
+                        backgroundColor: Color.fromARGB(255, 94, 179, 90),
+                        padding: const EdgeInsets.all(20.0),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         alignment: Alignment.center),
                     onPressed: () {
@@ -144,7 +177,7 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
                           onPressed(context);
                       }
                     },
-                    child: const Text( "Simpan Kategori", style: TextStyle(color: Colors.white )
+                    child: const Text( "Kirim Notifikasi", style: TextStyle(color: Colors.white )
                     ),
                   ),
                 ),

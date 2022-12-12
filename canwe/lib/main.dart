@@ -1,7 +1,9 @@
 import 'package:canwe/auth/display_profile.dart';
 import 'package:canwe/auth/login.dart';
+import 'package:canwe/auth/moderasi_galang_dana.dart';
 import 'package:canwe/auth/profile.dart';
 import 'package:canwe/auth/register.dart';
+import 'package:canwe/donasi/donasi_page.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Canwe',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-        home: const DisplayProfilePage(),
+        home: const ModerasiGalangDana(),
       ),
     );
   }

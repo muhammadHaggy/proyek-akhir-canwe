@@ -1,17 +1,19 @@
+import 'package:canwe/notifikasi/notifikasi_form_page.dart';
+import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:canwe/utils/fetch_notifikasi.dart';
 import 'package:flutter/material.dart';
 import 'package:canwe/notifikasi/notifikasi_detail_page.dart';
 import '../models/notifikasi.dart';
 
 
-class NotifikasiPage extends StatefulWidget {
-  const NotifikasiPage({super.key});
+class NotifikasiAdminPage extends StatefulWidget {
+  const NotifikasiAdminPage({super.key});
 
   @override
-  State<NotifikasiPage> createState() => _NotifikasiPageState();
+  State<NotifikasiAdminPage> createState() => _NotifikasiAdminPageState();
 }
 
-class _NotifikasiPageState extends State<NotifikasiPage> {
+class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
     late Future<List<Notifikasi>> _notifikasi;
     
     @override
@@ -123,6 +125,17 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
                         }
                     }
                 ),
+                floatingActionButton: FloatingActionButton(
+                  onPressed: () => 
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => 
+                      const NotifikasiFormPage()),
+                    ),
+                  tooltip: 'Add',
+                  child: const Icon(Icons.add),
+                  backgroundColor: Colors.red,
+            ),
         );
     }
 }

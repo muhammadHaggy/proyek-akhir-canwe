@@ -250,16 +250,16 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Text(
+                                    children: const [
+                                      Text(
                                         "Register",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             color: Colors.black,
                                             fontSize: 19),
                                       ),
-                                      const SizedBox(width: 15),
-                                      const Icon(
+                                      SizedBox(width: 15),
+                                      Icon(
                                         Icons.arrow_forward_rounded,
                                         color: Colors.black,
                                         size: 26,

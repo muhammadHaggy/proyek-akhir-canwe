@@ -1,8 +1,10 @@
 import 'package:canwe/auth/display_profile.dart';
 import 'package:canwe/auth/login.dart';
+import 'package:canwe/auth/moderasi_galang_dana.dart';
 import 'package:canwe/donasi/donasi_page.dart';
 import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:canwe/notifikasi/notifikasi_form_page.dart';
+import 'package:canwe/notifikasi/notif_admin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -14,19 +16,29 @@ class MyBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    final List<Widget> route = [
-      Scaffold(),
-      DonasiPage(),
-      Scaffold(),
-      NotifikasiFormPage(),      
-      request.loggedIn ? DisplayProfilePage() : LoginPage(),
-    ];
+    final List<Widget> route = request.loggedIn
+        ? [
+            Scaffold(),
+            DonasiPage(),
+            request.jsonData["is_admin"] ? ModerasiGalangDana() : Scaffold(),
+            request.jsonData["is_admin"]
+                ? NotifikasiAdminPage()
+                : NotifikasiPage(),
+            DisplayProfilePage(),
+          ]
+        : [
+            Scaffold(),
+            LoginPage(),
+            LoginPage(),
+            LoginPage(),
+            LoginPage(),
+          ];
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.handshake_rounded),
@@ -36,7 +48,7 @@ class MyBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.create),
           label: 'Galang Dana',
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.green,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.notifications),
@@ -46,11 +58,12 @@ class MyBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profil',
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.green,
         ),
       ],
       currentIndex: selectedIndex,
-      selectedItemColor: Colors.amber[800],
+      unselectedItemColor: Colors.grey[350],
+      selectedItemColor: Colors.white,
       onTap: (value) {
         Navigator.push(
             context, MaterialPageRoute(builder: ((context) => route[value])));

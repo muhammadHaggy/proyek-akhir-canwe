@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:canwe/models/notifikasi.dart';
+import 'package:canwe/notifikasi/notif_page.dart';
 import 'package:intl/intl.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class MyNotifikasitDetailPage extends StatelessWidget {
   final Notifikasi notif;
@@ -9,57 +11,50 @@ class MyNotifikasitDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail'),
+        title: const Text('Detail Notifikasi'),
+        backgroundColor: Color.fromARGB(255, 225, 139, 122),
       ),
       body: Row(
         children: <Widget>[
           Expanded(
             flex: 1,
             child: Padding(
+            
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: <Widget>[
                   Column(
                     children: [
+                      const SizedBox(height: 30),
                       Text(
-                        notif.fields.title,
+                        "Pengirim: " + notif.fields.title,
                         style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: 20),
-                      ListTile(
-                        leading: const Text(
-                          'Release Date: ',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        trailing: Text(
-                          notif.fields.description,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        dense: true,
-                      ),       
-       
+                      const SizedBox(height: 40),
+                      RichText(
+                          text: TextSpan(
+                            // Note: Styles for TextSpans must be explicitly defined.
+                            // Child text spans will inherit styles from parent
+                            style: const TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.black,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(text: notif.fields.description, style: const TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromARGB(255, 83, 83, 83),
+                                )),
+                            ],  
+                          ),
+                        )      
                     ],
                   ),
-                  const Spacer(),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        padding: const EdgeInsets.all(15.0),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        alignment: Alignment.center),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      "Back",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+                  const Spacer(flex: 5),
                 ],
               ),
             ),

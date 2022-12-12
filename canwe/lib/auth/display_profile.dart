@@ -1,6 +1,7 @@
 import 'package:canwe/auth/login.dart';
 import 'package:canwe/auth/profile.dart';
 import 'package:canwe/widgets/botton_navbar.dart';
+import 'package:canwe/widgets/logged_in_required.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -19,12 +20,17 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    final columnHeight = 40.0;
+    const columnHeight = 40.0;
 
-    Future<Profile> getProfileInfo() async {
-      final response = await request
-          .get("https://canwe.pythonanywhere.com/user/profile/json");
-      return Profile.fromJson(response);
+    Future<Profile?> getProfileInfo() async {
+      try {
+        final response = await request
+            .get("https://canwe.pythonanywhere.com/user/profile/json");
+        return Profile.fromJson(response);
+      } on FormatException catch (err) {
+        print(err);
+        return null;
+      }
     }
 
     return Scaffold(
@@ -49,12 +55,15 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
       ),
       body: FutureBuilder(
         future: getProfileInfo(),
-        builder: (context, AsyncSnapshot<Profile> snapshot) {
+        builder: (context, AsyncSnapshot<Profile?> snapshot) {
           if (snapshot.hasError) {
             return Text(snapshot.error.toString());
           }
-          if (snapshot.data == null) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.data == null) {
+            return const LoggedInRequired();
           } else {
             var profile = snapshot.data!;
             return Padding(
@@ -80,19 +89,22 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       style: TextStyle(
                                         fontSize: 30,
                                         fontWeight: FontWeight.w700,
-                                        color: Color.fromRGBO(64, 105, 225, 1),
+                                        color: Colors.black,
                                       ),
                                     ),
                                   ),
                                 ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
                                 Table(
-                                  columnWidths: {
+                                  columnWidths: const {
                                     0: FlexColumnWidth(2),
                                     1: FlexColumnWidth(3),
                                   },
                                   children: [
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           'Username:',
@@ -104,7 +116,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.username),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           'First Name:',
@@ -116,7 +128,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.firstName),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Last Name:",
@@ -128,7 +140,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.lastName),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Email Address:",
@@ -140,7 +152,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.email),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Tanggal Lahir:",
@@ -154,7 +166,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                           .substring(0, 10)),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Bio Singkat:",
