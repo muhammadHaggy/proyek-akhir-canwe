@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-        home: const ModerasiGalangDana(),
+        home: const DonasiPage(),
       ),
     );
   }
