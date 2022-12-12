@@ -6,6 +6,7 @@ import 'package:canwe/utils/get_data_faq.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:canwe/widgets/bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -399,6 +400,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+              
 
               // Stack(
               //   children: [
@@ -430,7 +432,12 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+        
       ),
+       bottomNavigationBar: MyBottomNavBar(
+                      key: GlobalKey(debugLabel: "BottomNavBar"),
+                      selectedIndex: 0,
+            ),
     );
   }
 
