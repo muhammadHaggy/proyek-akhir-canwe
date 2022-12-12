@@ -16,15 +16,6 @@ class MyBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-<<<<<<< HEAD
-    final List<Widget> route = [
-      Scaffold(),
-      DonasiPage(),
-      Scaffold(),
-      request.jsonData["is_admin"] == true? NotifikasiAdminPage(): NotifikasiPage(),      
-      request.loggedIn ? DisplayProfilePage() : LoginPage(),
-    ];
-=======
     final List<Widget> route = request.loggedIn
         ? [
             Scaffold(),
@@ -42,7 +33,6 @@ class MyBottomNavBar extends StatelessWidget {
             LoginPage(),
             LoginPage(),
           ];
->>>>>>> c3fbcb404f0a98804da7da2e86a131cbe40266db
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(

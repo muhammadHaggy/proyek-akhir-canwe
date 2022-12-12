@@ -1,16 +1,9 @@
 import 'package:canwe/notifikasi/notifikasi_form_page.dart';
-<<<<<<< HEAD
-=======
 import 'package:canwe/notifikasi/notif_page.dart';
->>>>>>> c3fbcb404f0a98804da7da2e86a131cbe40266db
 import 'package:canwe/utils/fetch_notifikasi.dart';
 import 'package:flutter/material.dart';
 import 'package:canwe/notifikasi/notifikasi_detail_page.dart';
 import '../models/notifikasi.dart';
-<<<<<<< HEAD
-import 'package:canwe/notifikasi/notif_page.dart';
-=======
->>>>>>> c3fbcb404f0a98804da7da2e86a131cbe40266db
 
 
 class NotifikasiAdminPage extends StatefulWidget {
@@ -37,24 +30,13 @@ class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
             backgroundColor: Color.fromARGB(255, 225, 139, 122),
             ),
             body: FutureBuilder(
-<<<<<<< HEAD
-                    
                     future: _notifikasi,
                     builder: (context, AsyncSnapshot snapshot) {
-                        
-=======
-                    future: _notifikasi,
-                    builder: (context, AsyncSnapshot snapshot) {
->>>>>>> c3fbcb404f0a98804da7da2e86a131cbe40266db
                         if (snapshot.data == null) {
                             return const Center(child: CircularProgressIndicator());
 
                         } else {
                             if (!snapshot.hasData) {
-<<<<<<< HEAD
-                            
-=======
->>>>>>> c3fbcb404f0a98804da7da2e86a131cbe40266db
                                 return Column(
                                     children: const [
                                     Text("Tidak ada Notifikasi", style: TextStyle(color: Color(0xff59A5D8), fontSize: 20
@@ -136,27 +118,6 @@ class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
                                                 subtitle: Text(snapshot.data![index].fields.description),
                                             )
                                         ),
-<<<<<<< HEAD
-                                    ),
-
-                            ); 
-                            }
-                        }
-                    }
-                    
-                ),
-              floatingActionButton: FloatingActionButton(
-                backgroundColor: Colors.red,
-                onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NotifikasiFormPage(),
-                )),
-                tooltip: 'Add',
-                child: const Icon(Icons.add),
-              )
-                            , 
-=======
                                     )
                                     
                             );
@@ -175,7 +136,6 @@ class _NotifikasiAdminPageState extends State<NotifikasiAdminPage> {
                   child: const Icon(Icons.add),
                   backgroundColor: Colors.red,
             ),
->>>>>>> c3fbcb404f0a98804da7da2e86a131cbe40266db
         );
     }
 }
