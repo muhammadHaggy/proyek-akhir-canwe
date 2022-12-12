@@ -3,7 +3,7 @@ import 'package:canwe/widgets/botton_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-
+import 'package:intl/intl.dart';
 import '../widgets/logged_in_required.dart';
 
 class ModerasiGalangDana extends StatefulWidget {
@@ -63,6 +63,8 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
               return const LoggedInRequired();
             } else {
               var listDonasi = snapshot.data!.data;
+              final currencyFormatter =
+                  NumberFormat.simpleCurrency(locale: "id_ID");
               return Center(
                 child: ListView.separated(
                   itemCount: listDonasi.length,
@@ -74,6 +76,7 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           ListTile(
+                            isThreeLine: true,
                             leading: ConstrainedBox(
                               constraints: const BoxConstraints(
                                 minWidth: 44,
@@ -86,49 +89,71 @@ class _ModerasiGalangDanaState extends State<ModerasiGalangDana> {
                                       donasiFields.urlFoto),
                             ),
                             title: Text(donasiFields.nama),
-                            subtitle:
-                                Flexible(child: Text(donasiFields.deskripsi)),
+                            subtitle: Text(
+                              donasiFields.deskripsi,
+                              maxLines: 2,
+                            ),
+                            trailing: Text(donasiFields.tipe),
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              TextButton(
-                                onPressed: (() async {
-                                  final response =
-                                      await approveDonasi(donasi.pk);
-                                  if (!mounted) return;
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                    content: Text(
-                                      response['message'],
-                                      style: const TextStyle(),
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text(
+                                    "Target Dana: ${currencyFormatter.format(donasiFields.target)}",
+                                    overflow: TextOverflow.clip,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  TextButton(
+                                    onPressed: (() async {
+                                      final response =
+                                          await approveDonasi(donasi.pk);
+                                      if (!mounted) return;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          response['message'],
+                                          style: const TextStyle(),
+                                        ),
+                                      ));
+                                      setState(() {});
+                                    }),
+                                    child: const Text(
+                                      "Approve",
+                                      style: TextStyle(color: Colors.green),
                                     ),
-                                  ));
-                                  setState(() {});
-                                }),
-                                child: const Text("Approve"),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              TextButton(
-                                onPressed: (() async {
-                                  final response =
-                                      await rejectDonasi(donasi.pk);
-                                  if (!mounted) return;
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                    content: Text(
-                                      response['message'],
-                                      style: const TextStyle(),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  TextButton(
+                                    onPressed: (() async {
+                                      final response =
+                                          await rejectDonasi(donasi.pk);
+                                      if (!mounted) return;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          response['message'],
+                                          style: const TextStyle(),
+                                        ),
+                                      ));
+                                      setState(() {});
+                                    }),
+                                    child: const Text(
+                                      "Reject",
+                                      style: TextStyle(color: Colors.red),
                                     ),
-                                  ));
-                                  setState(() {});
-                                }),
-                                child: const Text("Reject"),
-                              ),
-                              const SizedBox(
-                                width: 8,
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
