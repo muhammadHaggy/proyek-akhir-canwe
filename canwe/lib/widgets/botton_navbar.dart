@@ -1,10 +1,7 @@
 import 'package:canwe/auth/display_profile.dart';
 import 'package:canwe/auth/login.dart';
-import 'package:canwe/auth/moderasi_galang_dana.dart';
 import 'package:canwe/donasi/donasi_page.dart';
-import 'package:canwe/notifikasi/notif_page.dart';
-import 'package:canwe/notifikasi/notifikasi_form_page.dart';
-import 'package:canwe/notifikasi/notif_admin_page.dart';
+import 'package:canwe/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -12,57 +9,82 @@ import 'package:provider/provider.dart';
 class MyBottomNavBar extends StatelessWidget {
   MyBottomNavBar({super.key, required this.selectedIndex});
   final int selectedIndex;
+  int _bottomNavCurrentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    final List<Widget> route = request.loggedIn
-        ? [
-            Scaffold(),
-            DonasiPage(),
-            request.jsonData["is_admin"] ? ModerasiGalangDana() : Scaffold(),
-            request.jsonData["is_admin"]
-                ? NotifikasiAdminPage()
-                : NotifikasiPage(),
-            DisplayProfilePage(),
-          ]
-        : [
-            Scaffold(),
-            LoginPage(),
-            LoginPage(),
-            LoginPage(),
-            LoginPage(),
-          ];
+    final List<Widget> route = [
+      HomePage(),
+      DonasiPage(),
+      Scaffold(),
+      request.loggedIn ? DisplayProfilePage() : LoginPage(),
+    ];
+
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          activeIcon: new Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          icon: new Icon(
+            Icons.home,
+            color: Colors.white12,
+          ),
           label: 'Home',
-          backgroundColor: Colors.green,
+          backgroundColor: Color.fromARGB(248, 32, 105, 3),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.handshake_rounded),
+          activeIcon: new Icon(
+            Icons.handshake,
+            color: Colors.white,
+          ),
+          icon: new Icon(
+            Icons.handshake,
+            color: Colors.white12,
+          ),
           label: 'Donasi',
-          backgroundColor: Colors.green,
+          backgroundColor: Color.fromARGB(248, 32, 105, 3),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.create),
+          activeIcon: new Icon(
+            Icons.create,
+            color: Colors.white,
+          ),
+          icon: new Icon(
+            Icons.create,
+            color: Colors.white12,
+          ),
           label: 'Galang Dana',
-          backgroundColor: Colors.green,
+          backgroundColor: Color.fromARGB(248, 32, 105, 3),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.notifications),
+         BottomNavigationBarItem(
+          activeIcon: new Icon(
+            Icons.notifications,
+            color: Colors.white,
+          ),
+          icon: new Icon(
+            Icons.notifications,
+            color: Colors.white12,
+          ),
           label: 'Notifikasi',
-          backgroundColor: Color.fromARGB(255, 64, 128, 255),
+          backgroundColor: Color.fromARGB(248, 32, 105, 3),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          activeIcon: new Icon(
+            Icons.person,
+            color: Colors.white,
+          ),
+          icon: new Icon(
+            Icons.person,
+            color: Colors.white12,
+          ),
           label: 'Profil',
-          backgroundColor: Colors.green,
+          backgroundColor: Color.fromARGB(248, 32, 105, 3),
         ),
       ],
       currentIndex: selectedIndex,
-      unselectedItemColor: Colors.grey[350],
       selectedItemColor: Colors.white,
       onTap: (value) {
         Navigator.push(

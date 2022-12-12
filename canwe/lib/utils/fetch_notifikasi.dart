@@ -8,7 +8,7 @@ Future<List<Notifikasi>> fetchNotifikasi() async {
   var response = await http.get(
     url,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      // "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json",
     },
   );
@@ -29,7 +29,7 @@ Future<List<Notifikasi>> deleteAlbum(String id) async {
   var response = await http.delete(
     url,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      // "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json",
     },
   );
