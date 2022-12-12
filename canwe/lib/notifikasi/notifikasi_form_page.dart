@@ -49,7 +49,7 @@ class _SendNotificationPageState extends State<NotifikasiFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Form Notifikasi'),
-        backgroundColor: Color.fromARGB(255, 225, 139, 122),
+        backgroundColor: Color(0xFF048353),
       ),
       body: Form(
         key: _formKey,

@@ -15,7 +15,7 @@ class MyNotifikasitDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Notifikasi'),
-        backgroundColor: Color.fromARGB(255, 225, 139, 122),
+        backgroundColor: Color(0xFF048353),
       ),
       body: Row(
         children: <Widget>[

@@ -25,7 +25,7 @@ class _NotifikasiPageState extends State<NotifikasiPage> {
         return Scaffold(
             appBar: AppBar(
             title: const Text('Notifikasi'),
-            backgroundColor: Color.fromARGB(255, 225, 139, 122),
+            backgroundColor: Color(0xFF048353),
             ),
             body: FutureBuilder(
                     future: _notifikasi,
