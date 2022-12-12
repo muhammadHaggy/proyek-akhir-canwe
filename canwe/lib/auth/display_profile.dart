@@ -20,7 +20,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    final columnHeight = 40.0;
+    const columnHeight = 40.0;
 
     Future<Profile?> getProfileInfo() async {
       try {
@@ -94,17 +94,17 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Table(
-                                  columnWidths: {
+                                  columnWidths: const {
                                     0: FlexColumnWidth(2),
                                     1: FlexColumnWidth(3),
                                   },
                                   children: [
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           'Username:',
@@ -116,7 +116,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.username),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           'First Name:',
@@ -128,7 +128,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.firstName),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Last Name:",
@@ -140,7 +140,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.lastName),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Email Address:",
@@ -152,7 +152,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                       Text(profile.email),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Tanggal Lahir:",
@@ -166,7 +166,7 @@ class _DisplayProfilePageState extends State<DisplayProfilePage> {
                                           .substring(0, 10)),
                                     ]),
                                     TableRow(children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: columnHeight,
                                         child: Text(
                                           "Bio Singkat:",

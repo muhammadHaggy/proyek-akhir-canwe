@@ -1,21 +1,22 @@
 // To parse this JSON data, do
 //
-//     final donasi = donasiFromJson(jsonString);
+//     final donasiModerasi = donasiModerasiFromJson(jsonString);
 
 import 'dart:convert';
 
-Donasi donasiFromJson(String str) => Donasi.fromJson(json.decode(str));
+DonasiModerasi donasiModerasiFromJson(String str) =>
+    DonasiModerasi.fromJson(json.decode(str));
 
-String donasiToJson(Donasi data) => json.encode(data.toJson());
+String donasiModerasiToJson(DonasiModerasi data) => json.encode(data.toJson());
 
-class Donasi {
-  Donasi({
+class DonasiModerasi {
+  DonasiModerasi({
     required this.data,
   });
 
   List<Datum> data;
 
-  factory Donasi.fromJson(Map<String, dynamic> json) => Donasi(
+  factory DonasiModerasi.fromJson(Map<String, dynamic> json) => DonasiModerasi(
         data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
       );
 
@@ -47,23 +48,21 @@ class Datum {
 class Fields {
   Fields({
     required this.deskripsi,
-    required this.isApproved,
+    this.isApproved,
     required this.nama,
     required this.penggalang,
     required this.target,
     required this.tipe,
     required this.urlFoto,
-    required this.terkumpul,
   });
 
   String deskripsi;
-  bool? isApproved;
+  dynamic isApproved;
   String nama;
   String penggalang;
   int target;
   String tipe;
   String urlFoto;
-  int terkumpul;
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(
         deskripsi: json["deskripsi"],
@@ -73,7 +72,6 @@ class Fields {
         target: json["target"],
         tipe: json["tipe"],
         urlFoto: json["urlFoto"],
-        terkumpul: json["terkumpul"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -84,6 +82,5 @@ class Fields {
         "target": target,
         "tipe": tipe,
         "urlFoto": urlFoto,
-        "terkumpul": terkumpul,
       };
 }

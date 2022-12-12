@@ -1,5 +1,4 @@
 import 'package:canwe/auth/display_profile.dart';
-import 'package:canwe/auth/profile.dart';
 import 'package:canwe/auth/register.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
